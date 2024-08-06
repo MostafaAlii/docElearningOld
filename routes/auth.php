@@ -1,6 +1,6 @@
 <?php
 
-/*use App\Http\Controllers\Auth;
+use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -22,4 +22,4 @@ Route::middleware('auth')->group(function () {
     Route::post('confirm-password', [Auth\ConfirmablePasswordController::class, 'store']);
     Route::put('password', [Auth\PasswordController::class, 'update'])->name('password.update');
     Route::post('logout', [Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
-});*/
+});
