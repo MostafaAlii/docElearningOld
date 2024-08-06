@@ -11,14 +11,14 @@ class TeacherTableSeeder extends Seeder {
         $teacher = Teacher::create([
             'name'          =>  'Mostafa Alii',
             'email'         =>  'teacher@app.com',
-            'password'      =>  'teacher@app.com',
+            'password'      =>  bcrypt('teacher@app.com'),
             'status'        =>  'active',
             'remember_token' => Str::random(10),
         ]);
         $teacher = Teacher::create([
             'name'          =>  'Mostafa',
             'email'         =>  'mmteacher@app.com',
-            'password'      =>  '123123',
+            'password'      =>  bcrypt('123123'),
             'status'        =>  'active',
             'remember_token' => Str::random(10),
         ]);

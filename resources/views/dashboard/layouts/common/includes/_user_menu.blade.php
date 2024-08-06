@@ -151,7 +151,14 @@
         <!--end::Menu item-->
         <!--begin::Menu item-->
         <div class="menu-item px-5">
-            <a href="../../demo13/dist/authentication/flows/basic/sign-in.html" class="menu-link px-5">Sign Out</a>
+            @if(auth('admin')->check())
+                <form method="POST" action="{{ route('admin.logout') }}">
+                    @csrf
+                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="menu-link px-5">
+                        Sign Out
+                    </a>
+                </form>
+            @endif
         </div>
         <!--end::Menu item-->
         <!--begin::Menu separator-->

@@ -11,7 +11,7 @@ class AdminTableSeeder extends Seeder {
         $admin = Admin::create([
             'name'          =>  'Mostafa Alii',
             'email'         =>  'admin@app.com',
-            'password'      =>  'admin@m0stafaAlii01015558628',
+            'password'      =>  bcrypt('123123'),
             'type'          =>  'admin',
             'status'        =>  'active',
             'remember_token' => Str::random(10),
@@ -19,7 +19,7 @@ class AdminTableSeeder extends Seeder {
         $admin = Admin::create([
             'name'          =>  'Mostafa',
             'email'         =>  'mm@app.com',
-            'password'      =>  '123123',
+            'password'      =>  bcrypt('123123'),
             'status'        =>  'active',
             'type'          =>  'supervisor',
             'remember_token' => Str::random(10),
