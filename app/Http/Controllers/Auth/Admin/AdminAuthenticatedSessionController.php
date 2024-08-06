@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Auth\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AdminLoginRequest;
 use Illuminate\Http\Request;
@@ -18,13 +20,24 @@ class AdminAuthenticatedSessionController extends Controller {
     }
 
     public function store(AdminLoginRequest $request) {
-        if (admin_guard()->attempt(['email' => $request->input("email"), 'password' => $request->input("password")])) {
-            return redirect()->route($this->redirectRouteName)->with(['success' => 'تم تسجيل الدخول بنجاح']);
+        $credentials = $request->only('email', 'password');
+        if (admin_guard()->attempt($credentials)) {
+            $admin = admin_guard()->user();
+            if ($admin->status === 'active') {
+                toastr()->success('تم تسجيل الدخول بنجاح');
+                return redirect()->route($this->redirectRouteName);
+            } else {
+                admin_guard()->logout();
+                toastr()->warning('الحساب غير مفعل');
+                return redirect()->back();
+            }
         }
-        return redirect()->back()->with(['error' => 'هناك خطا بالبيانات']);
+        toastr()->error('هناك خطأ بالبيانات');
+        return redirect()->back();
     }
 
-    public function forgot_password() {
+    public function forgot_password()
+    {
         return view($this->forgotPasswordViewPath);
     }
 
@@ -73,7 +86,8 @@ class AdminAuthenticatedSessionController extends Controller {
         }
     }*/
 
-    public function destroy(Request $request) {
+    public function destroy(Request $request)
+    {
         admin_guard()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

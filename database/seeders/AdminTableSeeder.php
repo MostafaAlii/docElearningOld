@@ -20,7 +20,7 @@ class AdminTableSeeder extends Seeder {
             'name'          =>  'Mostafa',
             'email'         =>  'mm@app.com',
             'password'      =>  bcrypt('123123'),
-            'status'        =>  'active',
+            'status'        =>  'inactive',
             'type'          =>  'supervisor',
             'remember_token' => Str::random(10),
         ]);

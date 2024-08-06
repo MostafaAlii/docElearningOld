@@ -89,5 +89,12 @@
 @endsection
 
 @section('js')
-
+<script>
+    $(document).ready(function() {
+        @if(session('toastr'))
+            var toastrOptions = session('toastr');
+            toastr[toastrOptions.type](toastrOptions.message);
+        @endif
+    });
+</script>
 @endsection
