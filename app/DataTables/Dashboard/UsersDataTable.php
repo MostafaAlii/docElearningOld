@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Utilities\Request as DataTableRequest;
 
-class UsersDataTable extends BaseDataTable
-{
+class UsersDataTable extends BaseDataTable {
     public function __construct(DataTableRequest $request) {
         parent::__construct(new User());
         $this->request = $request;

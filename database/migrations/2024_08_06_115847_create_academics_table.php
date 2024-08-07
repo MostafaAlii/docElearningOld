@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('academics', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone', 20)->nullable()->after('email_verified_at');
             $table->enum('status', ['active', 'inactive']);
-            $table->enum('type', ['admin', 'supervisor']);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('academics');
     }
 };
