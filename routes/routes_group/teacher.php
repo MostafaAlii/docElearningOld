@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Dashboard\Teacher;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 /*
@@ -18,9 +18,8 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
-        Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-            Route::get('dashboard', Dashboard\DashboardController::class)->name('dashboard');
+        Route::group(['middleware' => 'auth:teacher', 'prefix' => 'teacher', 'as' => 'teacher.'], function () {
+            Route::get('dashboard', Teacher\DashboardController::class)->name('dashboard');
         });
-        //require_dashboard_routes();
         require __DIR__.'/auth.php';
 });

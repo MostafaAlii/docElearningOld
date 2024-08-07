@@ -2,6 +2,7 @@
 return [
     'auth_page_title'                     =>                  'تسجيل الدخــول',
     'admin_auth_form_title'               =>                  'تسجيل الدخول كـمدير',
+    'teacher_auth_form_title'             =>                  'تسجيل دخول كـمحاضر',
     'user_auth_form_title'                =>                  'تسجيل الدخول',
     'email_address'                       =>                  'البريد الالكترونى',
     'password'                            =>                  'كلمة المرور',
