@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Mail\Admin\AdminResetPassword;
 use Illuminate\Support\Facades\{DB, Mail};
-
 class AdminAuthenticatedSessionController extends Controller {
     protected $redirectRouteName = 'admin.dashboard';
     protected $loginViewPath = 'dashboard.Admin.auth.login';
@@ -24,20 +23,19 @@ class AdminAuthenticatedSessionController extends Controller {
         if (admin_guard()->attempt($credentials)) {
             $admin = admin_guard()->user();
             if ($admin->status === 'active') {
-                toastr()->success('تم تسجيل الدخول بنجاح');
+                toastr()->success(trans('dashboard/auth.success_login_msg'));
                 return redirect()->route($this->redirectRouteName);
             } else {
                 admin_guard()->logout();
-                toastr()->warning('الحساب غير مفعل');
+                toastr()->warning(trans('dashboard/auth.not_active_account_msg'));
                 return redirect()->back();
             }
         }
-        toastr()->error('هناك خطأ بالبيانات');
+        toastr()->error(trans('dashboard/auth.login_credential_failure'));
         return redirect()->back();
     }
 
-    public function forgot_password()
-    {
+    public function forgot_password() {
         return view($this->forgotPasswordViewPath);
     }
 

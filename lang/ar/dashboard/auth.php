@@ -22,4 +22,8 @@ return [
     'disabled_two_factor_authentication'  =>                  'تعطيل المصادقة الثنائية',
     'two_factor_authentication'           =>                  'المصادقة الثنائية',
     'two_factor_authentication_password_confirm'=>            'برجاء ادخال كلمة المرور لتأكيد المصادقة الثنائية',
+    // Login Page Authenticate Alert Messages ::
+    'success_login_msg'                   =>                  'تم تسجيل الدخول بنجاح',
+    'not_active_account_msg'              =>                  'الحساب غير مفعل',
+    'login_credential_failure'            =>                  'هناك خطأ بالبيانات',
 ];
